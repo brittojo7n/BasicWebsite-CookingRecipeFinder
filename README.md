@@ -1,9 +1,21 @@
-# Assignment_1
+# Recipe Finder (Test Website)
 
-## Assignment on HTML & CSS: A cooking recipe page
+A test implementation of a recipe search application using the free [TheMealDB](https://www.themealdb.com/) API. This project demonstrates web API integration, local storage usage, and responsive UI design.
 
-HTML contains all for the page, which involve headings, images, lists, and text blocks.
+## Features
 
-CSS dictates the interface and the layout such as: colors, font, spacing, or positioning (like Flexbox: place the image next to the text).
+- Search recipes by name
+- Save favorite recipes to browser's local storage
+- Responsive grid layout for all screen sizes
+- Detailed recipe view in modal popup
+- Clean modern interface with:
+  - Gradient text effects
+  - Blurred background
+  - Smooth animations
 
-These two collaborate in creating a well-structured, styled, and ultimately, a beautiful website.
+## Technologies Used
+
+- HTML5
+- CSS3 (Grid, Flexbox)
+- JavaScript (ES6+)
+- TheMealDB API (free tier)

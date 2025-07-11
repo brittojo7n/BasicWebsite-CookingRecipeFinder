@@ -5,9 +5,9 @@ const modalContent = document.getElementById('modalRecipeDetails');
 const modalCloseButton = document.querySelector('.close-button');
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
- 
+
 const searchRecipes = async () => {
-  const query = document.getElementById('searchInput').value.trim();
+  const query = searchInput.value.trim();
   if (!query) return;
 
   const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
@@ -27,9 +27,7 @@ const searchRecipes = async () => {
   });
 };
 
-const createRecipeCard = (meal, options = {}) => {
-  const { showAdd = false, showRemove = false } = options;
-
+const createRecipeCard = (meal, { showAdd = false, showRemove = false } = {}) => {
   const card = document.createElement('div');
   card.className = 'recipe-card';
   card.innerHTML = `
@@ -40,7 +38,7 @@ const createRecipeCard = (meal, options = {}) => {
   `;
   
   card.addEventListener('click', (e) => {
-    if (e.target.tagName.toLowerCase() === "button") return;
+    if (e.target.tagName === "BUTTON") return;
     showRecipePopup(meal);
   });
 
@@ -50,8 +48,8 @@ const createRecipeCard = (meal, options = {}) => {
 const showRecipePopup = (meal) => {
   let ingredientsHTML = '<ul>';
   for (let i = 1; i <= 20; i++) {
-    const ingredient = meal[`strIngredient${i}`]
-    const measure = meal[`strMeasure${i}`]
+    const ingredient = meal[`strIngredient${i}`];
+    const measure = meal[`strMeasure${i}`];
     if (ingredient && ingredient.trim() !== '') {
       ingredientsHTML += `<li>${measure} ${ingredient}</li>`;
     }
@@ -76,7 +74,6 @@ const addToFavorites = (id) => {
     alert('Already in favorites!');
     return;
   }
-
   favorites.push(id);
   localStorage.setItem('favorites', JSON.stringify(favorites));
   loadFavorites();
@@ -108,23 +105,7 @@ const loadFavorites = async () => {
 };
 
 searchButton.addEventListener('click', searchRecipes);
-
-searchInput.addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
-    searchRecipes();
-  }
-});
-
-modalCloseButton.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
-
-window.addEventListener('click', (event) => {
-  if (event.target == modal) {
-    modal.style.display = 'none';
-  }
-});
-
-window.addEventListener('load', () => {
-  loadFavorites();
-});
+searchInput.addEventListener('keyup', (e) => e.key === 'Enter' && searchRecipes());
+modalCloseButton.addEventListener('click', () => modal.style.display = 'none');
+window.addEventListener('click', (e) => e.target === modal && (modal.style.display = 'none'));
+window.addEventListener('load', loadFavorites);

@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Recipe Finder</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search and save your favorite recipes">
+  <title>Recipe Finder | Discover Your Favorite Meals</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <section class="finder-section">
-    <div class="main-heading">
+  <main class="finder-section">
+    <header class="main-heading">
       <h1>Recipe Finder</h1>
-      <p>Discover your favorite meal</p>
-    </div>
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search for a recipe..." />
-      <button id="searchButton">Search</button>
-    </div>
+      <p class="subtitle">Discover your favorite meal</p>
+    </header>
 
-    <div id="recipeGrid" class="grid"></div>
+    <section aria-label="Search section">
+      <div class="search-bar">
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search for a recipe..." 
+          aria-label="Search recipes"
+        >
+        <button id="searchButton" aria-label="Search">Search</button>
+      </div>
+    </section>
 
-    <h2>Favorite Recipes</h2>
-    <div id="favorites" class="grid"></div>
-  </section>
+    <section aria-label="Recipe results">
+      <div id="recipeGrid" class="grid" role="grid"></div>
+    </section>
 
-  <div id="recipeModal" class="modal">
+    <section aria-label="Favorite recipes">
+      <h2>Favorite Recipes</h2>
+      <div id="favorites" class="grid" role="grid"></div>
+    </section>
+  </main>
+
+  <div id="recipeModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <div id="modalRecipeDetails"></div>
+      <button class="close-button" aria-label="Close modal">&times;</button>
+      <div id="modalRecipeDetails" role="document"></div>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
