@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recipe Finder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body background="back.jpg">
+  <section class="finder-section">
+    <div class="main-heading">
+      <h1>Recipe Finder</h1>
+      <p>Discover your favorite meal</p>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search for a recipe..." />
+      <button id="searchButton">Search</button>
+    </div>
+
+    <div id="recipeGrid" class="grid"></div>
+
+    <h2>Favorite Recipes</h2>
+    <div id="favorites" class="grid"></div>
+  </section>
+
+  <div id="recipeModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div id="modalRecipeDetails"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
